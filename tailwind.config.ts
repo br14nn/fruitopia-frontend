@@ -8,6 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        xs: ".4375rem",
+        sm: ".6875rem",
+        base: "1rem",
+        md: "1.5rem",
+        lg: "2.25rem",
+        xl: "3.375rem",
+        "2xl": "5.0625rem",
+        "3xl": "7.625rem",
+        "4xl": "11.375rem",
+      },
       colors: {
         primary: {
           "50": "#f6f6f6",
