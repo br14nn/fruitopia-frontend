@@ -11,16 +11,20 @@ export default function Home() {
             FRUITOPIA
           </h1>
           <div className="flex w-full items-center justify-center gap-4">
-            <hr className="flex-grow rounded-full border border-accent-default xl:border-2" />
+            <hr className="flex-grow border border-accent-default xl:border-2" />
             <div className="aspect-square w-4 rotate-45 border-2 border-accent-default xl:w-6 xl:border-4" />
-            <hr className="flex-grow rounded-full border border-accent-default xl:border-2" />
+            <hr className="flex-grow border border-accent-default xl:border-2" />
           </div>
           <p className="mt-1 text-secondary-default/70 sm:mt-2 sm:text-md xl:mt-4 xl:text-lg">
             Est. 2024
           </p>
         </div>
       </section>
-      <section className="min-h-screen w-full"></section>
+      <section className="flex min-h-screen w-full flex-col p-8">
+        <h2 className="w-full text-center text-md font-semibold tracking-widest underline decoration-accent-default decoration-2 underline-offset-8">
+          SELECTIONS
+        </h2>
+      </section>
     </main>
   );
 }
