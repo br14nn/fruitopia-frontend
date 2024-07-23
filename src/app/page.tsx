@@ -1,7 +1,13 @@
 import Image from "next/image";
-import HeroBg from "../assets/images/hero-bg.png";
+import SeasonalFruitCard from "@/components/custom/SeasonalFruitCard";
+import {
+  SpringFruitImg,
+  SummerFruitImg,
+  FallFruitImg,
+  WinterFruitImg,
+} from "@/utils/images";
 
-export default function Home() {
+const Home = () => {
   return (
     <main className="flex w-full flex-col">
       <section className="flex min-h-[50svh] w-full flex-col items-center justify-center bg-[url('../assets/images/hero-bg.png')] bg-cover bg-center lg:min-h-screen">
@@ -20,11 +26,20 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section className="flex min-h-screen w-full flex-col p-8">
-        <h2 className="w-full text-center text-md font-semibold tracking-widest underline decoration-accent-default decoration-2 underline-offset-8">
-          SELECTIONS
+      <section className="flex min-h-fit w-full flex-col items-center gap-16 py-16 lg:py-24">
+        <h2 className="w-full text-center text-md font-bold tracking-widest underline decoration-accent-default decoration-2 underline-offset-8 lg:text-lg xl:decoration-4">
+          SEASONAL FRUITS
         </h2>
+        <div className="grid w-fit grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
+          <SeasonalFruitCard imgSrc={SpringFruitImg} text="SPRING" />
+          <SeasonalFruitCard imgSrc={SummerFruitImg} text="SUMMER" />
+          <SeasonalFruitCard imgSrc={FallFruitImg} text="FALL" />
+          <SeasonalFruitCard imgSrc={WinterFruitImg} text="WINTER" />
+        </div>
       </section>
+      <section className="min-h-screen w-full bg-secondary-default"></section>
     </main>
   );
-}
+};
+
+export default Home;
