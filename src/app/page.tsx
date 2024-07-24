@@ -40,7 +40,11 @@ const Home = () => {
         </div>
       </section>
       <section className="min-h-screen w-full bg-secondary-default text-primary-default">
-        <h2 className="text-md font-bold tracking-widest">ABOUT US</h2>
+        <div className="flex w-full max-w-[1536px] p-8 sm:p-16 lg:p-24">
+          <h2 className="text-md font-bold tracking-widest underline decoration-accent-default decoration-2 underline-offset-8 lg:text-lg">
+            ABOUT US
+          </h2>
+        </div>
       </section>
     </main>
   );
