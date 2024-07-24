@@ -7,7 +7,7 @@ interface SeasonalFruitCardProps {
 
 const SeasonalFruitCard = ({ imgSrc, text }: SeasonalFruitCardProps) => {
   return (
-    <div className="relative flex h-[350px] w-[250px] items-end justify-center p-4">
+    <div className="relative flex h-[350px] w-[250px] items-end justify-center p-4 2xl:h-[400px] 2xl:w-[300px]">
       <Image
         className="absolute inset-0 z-10 h-full w-full object-cover"
         src={imgSrc}
