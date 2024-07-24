@@ -26,18 +26,22 @@ const Home = () => {
           </p>
         </div>
       </section>
-      <section className="flex min-h-fit w-full flex-col items-center gap-16 py-16 lg:py-24">
-        <h2 className="w-full text-center text-md font-bold tracking-widest underline decoration-accent-default decoration-2 underline-offset-8 lg:text-lg xl:decoration-4">
-          SEASONAL FRUITS
-        </h2>
-        <div className="grid w-fit grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
-          <SeasonalFruitCard imgSrc={SpringFruitImg} text="SPRING" />
-          <SeasonalFruitCard imgSrc={SummerFruitImg} text="SUMMER" />
-          <SeasonalFruitCard imgSrc={FallFruitImg} text="FALL" />
-          <SeasonalFruitCard imgSrc={WinterFruitImg} text="WINTER" />
+      <section className="flex min-h-fit w-full justify-center">
+        <div className="flex w-full max-w-[1536px] flex-col items-center gap-8 p-8 sm:gap-16 sm:p-16 lg:p-24">
+          <h2 className="w-full text-start text-md font-bold tracking-widest underline decoration-accent-default decoration-2 underline-offset-8 lg:text-lg xl:decoration-4">
+            SEASONAL FRUITS
+          </h2>
+          <div className="grid w-fit grid-cols-1 justify-items-center gap-8 self-center sm:grid-cols-2 xl:grid-cols-4">
+            <SeasonalFruitCard imgSrc={SpringFruitImg} text="SPRING" />
+            <SeasonalFruitCard imgSrc={SummerFruitImg} text="SUMMER" />
+            <SeasonalFruitCard imgSrc={FallFruitImg} text="FALL" />
+            <SeasonalFruitCard imgSrc={WinterFruitImg} text="WINTER" />
+          </div>
         </div>
       </section>
-      <section className="min-h-screen w-full bg-secondary-default"></section>
+      <section className="min-h-screen w-full bg-secondary-default text-primary-default">
+        <h2 className="text-md font-bold tracking-widest">ABOUT US</h2>
+      </section>
     </main>
   );
 };
