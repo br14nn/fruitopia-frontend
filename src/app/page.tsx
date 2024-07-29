@@ -1,4 +1,3 @@
-import Image from "next/image";
 import SeasonalFruitCard from "@/components/custom/SeasonalFruitCard";
 import {
   SpringFruitImg,
@@ -39,9 +38,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="min-h-screen w-full bg-secondary-default text-primary-default">
-        <div className="flex w-full max-w-[1536px] p-8 sm:p-16 lg:p-24">
-          <h2 className="text-md font-bold tracking-widest underline decoration-accent-default decoration-2 underline-offset-8 lg:text-lg xl:decoration-4">
+      <section className="flex min-h-fit w-full justify-center bg-secondary-default text-primary-default">
+        <div className="flex w-full max-w-[1800px] flex-col items-center gap-8 p-8 sm:gap-16 sm:p-16 lg:p-24">
+          <h2 className="w-full text-center text-md font-bold tracking-widest underline decoration-accent-default decoration-2 underline-offset-8 lg:text-lg xl:decoration-4">
             ABOUT US
           </h2>
         </div>
