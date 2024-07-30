@@ -52,6 +52,12 @@ const Home = () => {
           </p>
         </div>
       </section>
+      <section className="flex w-full items-center justify-center bg-secondary-default text-primary-default">
+        <div className="flex w-full max-w-[1800px] flex-row justify-between px-8 py-4 sm:px-16 sm:py-8 lg:px-24">
+          <div>Social media icons</div>
+          <div>COPYRIGHT</div>
+        </div>
+      </section>
     </main>
   );
 };
