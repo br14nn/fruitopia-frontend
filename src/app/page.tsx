@@ -43,7 +43,7 @@ const Home = () => {
           <h2 className="w-full text-center text-md font-bold tracking-widest underline decoration-accent-default decoration-2 underline-offset-8 lg:text-lg xl:decoration-4">
             ABOUT US
           </h2>
-          <p className="text-center">
+          <p className="text-center font-thin xl:text-md">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quia
             eveniet consequatur similique ea asperiores laborum odio
             reprehenderit dolore fugit, expedita velit eius blanditiis
