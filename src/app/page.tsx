@@ -45,7 +45,10 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="flex min-h-fit w-full justify-center bg-primary-default text-secondary-default">
+      <section
+        id="aboutUs"
+        className="flex min-h-fit w-full justify-center bg-primary-default text-secondary-default"
+      >
         <div className="flex w-full max-w-[1800px] flex-col items-center gap-8 p-8 sm:p-16 lg:p-24">
           <h2 className="w-full text-center text-md font-bold tracking-widest underline decoration-accent-default decoration-2 underline-offset-8 lg:text-lg xl:decoration-4">
             ABOUT US
