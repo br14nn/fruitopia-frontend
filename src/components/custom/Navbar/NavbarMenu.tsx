@@ -41,7 +41,7 @@ const NavbarMenu = () => {
 
               <div className="flex flex-col">
                 <NavbarLink href="/">Home</NavbarLink>
-                <NavbarLink href="#">Products</NavbarLink>
+                <NavbarLink href="/products">Products</NavbarLink>
                 <NavbarLink href="/#aboutUs">About Us</NavbarLink>
               </div>
             </m.div>

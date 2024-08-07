@@ -27,7 +27,7 @@ const Navbar = () => {
           <NavbarLink className="px-8 py-4" href="/">
             Home
           </NavbarLink>
-          <NavbarLink className="px-8 py-4" href="#">
+          <NavbarLink className="px-8 py-4" href="/products">
             Products
           </NavbarLink>
           <NavbarLink className="px-8 py-4" href="/#aboutUs">
