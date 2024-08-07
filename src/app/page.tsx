@@ -1,9 +1,16 @@
+import Image from "next/image";
 import SeasonalFruitCard from "@/components/custom/SeasonalFruitCard";
+import SocialMediaLink from "@/components/custom/SocialMediaLink";
 import {
   SpringFruitImg,
   SummerFruitImg,
   FallFruitImg,
   WinterFruitImg,
+  FacebookLogo,
+  XLogo,
+  GithubLogo,
+  LinkedinLogo,
+  CopyrightImg,
 } from "@/utils/images";
 
 const Home = () => {
@@ -52,10 +59,31 @@ const Home = () => {
           </p>
         </div>
       </section>
-      <section className="flex w-full items-center justify-center bg-secondary-default text-primary-default">
-        <div className="flex w-full max-w-[1800px] flex-row justify-between px-8 py-4 sm:px-16 sm:py-8 lg:px-24">
-          <div>Social media icons</div>
-          <div>COPYRIGHT</div>
+      <section className="flex w-full items-center justify-center bg-accent-default text-primary-default">
+        <div className="flex w-full max-w-[1800px] flex-col items-center gap-2 px-4 py-2 sm:flex-row sm:justify-between sm:px-16 sm:py-4 lg:px-24">
+          <div className="flex flex-row items-center gap-2">
+            <SocialMediaLink
+              logo={FacebookLogo}
+              href="https://www.facebook.com/brianVVitualla/"
+            />
+            <SocialMediaLink logo={XLogo} href="https://x.com/_bri__bri___" />
+            <SocialMediaLink
+              logo={GithubLogo}
+              href="https://github.com/br14nn"
+            />
+            <SocialMediaLink
+              logo={LinkedinLogo}
+              href="https://www.linkedin.com/"
+            />
+          </div>
+          <div className="flex flex-row items-center gap-1">
+            <Image
+              className="h-4 w-4"
+              src={CopyrightImg}
+              alt="copyright image"
+            />
+            <p>2024 BRIAN VITUALLA</p>
+          </div>
         </div>
       </section>
     </main>
