@@ -4,6 +4,7 @@ import { m, LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
 import NavbarLink from "./NavbarLink";
 import UnstyledButton from "@/components/ui/UnstyledButton";
 import CloseIcon from "@/components/svgs/CloseIcon";
+import CustomButton from "@/components/ui/CustomButton";
 import useNavbarStore from "@/utils/store/useNavbarStore";
 
 const NavbarMenu = () => {
@@ -41,8 +42,18 @@ const NavbarMenu = () => {
 
               <div className="flex flex-col">
                 <NavbarLink href="/">Home</NavbarLink>
+
                 <NavbarLink href="/products">Products</NavbarLink>
+
                 <NavbarLink href="/#aboutUs">About Us</NavbarLink>
+              </div>
+
+              <div className="flex flex-col items-center gap-2">
+                <CustomButton className="self-center">Login</CustomButton>
+
+                <CustomButton className="self-center" variant={"outline"}>
+                  Register
+                </CustomButton>
               </div>
             </m.div>
           </LazyMotion>
@@ -50,9 +61,6 @@ const NavbarMenu = () => {
       </AnimatePresence>
     </>
   );
-
-  if (navbarStore.visible) {
-  }
 };
 
 export default NavbarMenu;
