@@ -20,7 +20,7 @@ const Navbar = () => {
     <>
       <nav className="fixed top-0 z-[990] grid w-full grid-cols-2 bg-accent-default p-4 xl:grid-cols-3 xl:p-0 xl:px-8">
         <Image
-          className="aspect-auto w-32 self-center"
+          className="aspect-auto h-7 w-auto self-center"
           src={FruitopiaNavbarLogo}
           alt="logo"
         />
