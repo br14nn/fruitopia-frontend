@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from "next/image";
+import Text from "../ui/Text";
 
 interface SeasonalFruitCardProps {
   imgSrc: StaticImageData;
@@ -14,7 +15,7 @@ const SeasonalFruitCard = ({ imgSrc, text }: SeasonalFruitCardProps) => {
         alt="fruits"
       />
       <div className="absolute inset-0 z-20 h-full w-full bg-gradient-to-t from-primary-default to-primary-default/0 to-80%" />
-      <p className="z-30 text-md tracking-widest">{text}</p>
+      <Text className="z-30 text-md tracking-widest">{text}</Text>
     </div>
   );
 };

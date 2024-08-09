@@ -49,13 +49,13 @@ const NavbarMenu = () => {
               </div>
 
               <div className="flex flex-col items-center gap-2">
-                <CustomButton className="h-[32px] w-[120px] self-center">
+                <CustomButton className="max-w-[150px] self-center">
                   Login
                 </CustomButton>
 
                 <CustomButton
-                  className="h-[32px] w-[120px] self-center"
-                  variant={"outline"}
+                  className="max-w-[150px] self-center"
+                  variant={"secondary"}
                 >
                   Register
                 </CustomButton>

@@ -8,13 +8,17 @@ const customButtonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary-default text-secondary-default transition-colors duration-200 hover:bg-secondary-default hover:text-primary-default",
-        outline:
-          "border-2 border-primary-default bg-transparent text-primary-default transition-colors duration-200 hover:bg-primary-default hover:text-secondary-default",
+          "bg-primary-default text-secondary-default transition-colors duration-200 hover:bg-primary-800",
+        secondary:
+          "bg-secondary-default text-primary-default transition-colors duration-200 hover:bg-secondary-200",
+      },
+      size: {
+        default: "h-fit w-full py-1",
       },
     },
     defaultVariants: {
       variant: "default",
+      size: "default",
     },
   },
 );
@@ -26,10 +30,10 @@ interface CustomButtonProps
 }
 
 const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
-  ({ variant, children, className, ...props }, ref) => {
+  ({ children, className, variant, size, ...props }, ref) => {
     return (
       <button
-        className={cn(customButtonVariants({ variant, className }))}
+        className={cn(customButtonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       >
