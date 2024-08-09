@@ -1,7 +1,7 @@
 const SearchIcon = () => {
   return (
     <svg
-      className="aspect-square w-5 stroke-primary-default"
+      className="aspect-square w-full stroke-primary-default"
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
