@@ -8,9 +8,9 @@ const customButtonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary-default text-secondary-default transition-colors duration-150 hover:bg-secondary-default hover:text-primary-default",
+          "bg-primary-default text-secondary-default transition-colors duration-200 hover:bg-secondary-default hover:text-primary-default",
         outline:
-          "border-2 border-primary-default bg-transparent text-primary-default transition-colors duration-150 hover:bg-primary-default hover:text-secondary-default",
+          "border-2 border-primary-default bg-transparent text-primary-default transition-colors duration-200 hover:bg-primary-default hover:text-secondary-default",
       },
     },
     defaultVariants: {
