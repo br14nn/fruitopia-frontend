@@ -2,7 +2,7 @@
 
 import { m, LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
 import NavbarLink from "./NavbarLink";
-import UnstyledButton from "@/components/ui/UnstyledButton";
+import IconButton from "@/components/ui/IconButton";
 import CloseIcon from "@/components/svgs/CloseIcon";
 import CustomButton from "@/components/ui/CustomButton";
 import useNavbarStore from "@/utils/store/useNavbarStore";
@@ -33,12 +33,12 @@ const NavbarMenu = () => {
               transition={{ type: "tween", duration: 0.15 }}
               className="fixed right-0 z-[992] flex h-[100svh] w-[50%] flex-col gap-8 bg-accent-default py-4 sm:w-[30%] xl:hidden"
             >
-              <UnstyledButton
+              <IconButton
                 className="mr-4 aspect-square w-6 self-end"
                 onClick={toggleVisibility}
               >
                 <CloseIcon />
-              </UnstyledButton>
+              </IconButton>
 
               <div className="flex flex-col">
                 <NavbarLink href="/">Home</NavbarLink>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import NavbarMenu from "./NavbarMenu";
 import NavbarLink from "./NavbarLink";
-import UnstyledButton from "@/components/ui/UnstyledButton";
+import IconButton from "@/components/ui/IconButton";
 import CustomButton from "@/components/ui/CustomButton";
 import HamburgerMenuIcon from "@/components/svgs/HamburgerMenuIcon";
 import { FruitopiaNavbarLogo } from "@/utils/images";
@@ -39,12 +39,12 @@ const Navbar = () => {
           </NavbarLink>
         </div>
 
-        <UnstyledButton
+        <IconButton
           className="aspect-square w-6 justify-self-end xl:hidden"
           onClick={handleClick}
         >
           <HamburgerMenuIcon />
-        </UnstyledButton>
+        </IconButton>
 
         <div className="hidden items-center justify-end gap-4 xl:flex">
           <CustomButton className="max-w-[150px] self-center">
