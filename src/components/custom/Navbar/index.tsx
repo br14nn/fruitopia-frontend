@@ -47,9 +47,14 @@ const Navbar = () => {
         </UnstyledButton>
 
         <div className="hidden items-center justify-end gap-4 xl:flex">
-          <CustomButton className="self-center">Login</CustomButton>
+          <CustomButton className="h-[32px] w-[120px] self-center">
+            Login
+          </CustomButton>
 
-          <CustomButton className="self-center" variant={"outline"}>
+          <CustomButton
+            className="h-[32px] w-[120px] self-center"
+            variant={"outline"}
+          >
             Register
           </CustomButton>
         </div>

@@ -3,7 +3,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/utils";
 
 const customButtonVariants = cva(
-  "flex h-[32px] w-[120px] items-center justify-center rounded-md",
+  "flex w-fit items-center justify-center rounded-md",
   {
     variants: {
       variant: {
