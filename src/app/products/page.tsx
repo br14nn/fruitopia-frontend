@@ -1,4 +1,4 @@
-import SearchBar from "@/components/custom/SearchBar";
+import SearchBar from "@/components/SearchBar";
 import FilterIcon from "@/components/svgs/FilterIcon";
 import Text from "@/components/ui/Text";
 

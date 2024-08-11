@@ -1,6 +1,6 @@
 import Image from "next/image";
-import SeasonalFruitCard from "@/components/custom/SeasonalFruitCard";
-import SocialMediaLink from "@/components/custom/SocialMediaLink";
+import SeasonalFruitCard from "@/components/SeasonalFruitCard";
+import SocialMediaLink from "@/components/SocialMediaLink";
 import Text from "@/components/ui/Text";
 import {
   SpringFruitImg,
@@ -21,10 +21,7 @@ const Home = () => {
         <div className="absolute inset-0 h-[50svh] w-full bg-primary-default/50 lg:min-h-screen" />
 
         <div className="z-10 flex flex-col items-center justify-center gap-2 leading-none sm:gap-3 xl:gap-4">
-          <Text
-            className="font-bold tracking-widest sm:text-xl md:text-2xl xl:text-3xl 2xl:text-4xl"
-            size={"large"}
-          >
+          <Text className="font-bold tracking-widest" size={"large"}>
             FRUITOPIA
           </Text>
 

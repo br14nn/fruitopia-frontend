@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import Text from "../ui/Text";
+import Text from "./ui/Text";
 
 interface SeasonalFruitCardProps {
   imgSrc: StaticImageData;

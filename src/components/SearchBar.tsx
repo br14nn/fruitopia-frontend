@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SearchIcon from "../svgs/SearchIcon";
+import SearchIcon from "./svgs/SearchIcon";
 import { cn } from "@/utils/utils";
 
 interface SearchBarProps {
