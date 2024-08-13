@@ -4,17 +4,24 @@ import { useState } from "react";
 import { m, LazyMotion, AnimatePresence, domAnimation } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import LogInModal from "./LogInModal";
 import CustomLink from "./ui/CustomLink";
+import Button from "./ui/Button";
 import HamburgerMenuIcon from "./svgs/HamburgerMenuIcon";
 import CloseIcon from "./svgs/CloseIcon";
 import { FruitopiaNavbarLogo } from "@/utils/images";
-import Button from "./ui/Button";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
+  const [toggleLogInModal, setToggleLogInModal] = useState<boolean>(false);
+  const LogInModalMotion = m(LogInModal);
 
   const handleToggleMenu = () => {
     setToggleMenu((oldVal) => !oldVal);
+  };
+
+  const handleToggleLogInModal = () => {
+    setToggleLogInModal((oldVal) => !oldVal);
   };
 
   return (
@@ -33,6 +40,7 @@ const Navbar = () => {
           <span>FRUITOPIA</span>
         </Link>
 
+        {/* background for mobile navbar menu when opened*/}
         {toggleMenu && (
           <div
             className="fixed inset-0 h-[100svh] w-full bg-primary-default/50 backdrop-blur-sm xl:hidden"
@@ -83,7 +91,12 @@ const Navbar = () => {
                 </CustomLink>
 
                 <div className="mt-4 flex w-full flex-col items-center justify-center gap-2 sm:flex-row xl:hidden">
-                  <Button className="max-w-[120px]">Login</Button>
+                  <Button
+                    className="max-w-[120px]"
+                    onClick={handleToggleLogInModal}
+                  >
+                    Log In
+                  </Button>
 
                   <Button className="max-w-[120px]" variant={"secondary"}>
                     Sign Up
@@ -94,7 +107,15 @@ const Navbar = () => {
           )}
         </AnimatePresence>
 
-        {/* Desktop navbar menu */}
+        {/* Hamburger menu toggler on mobile screens */}
+        <button
+          className="flex w-fit items-center justify-center justify-self-end xl:hidden"
+          onClick={handleToggleMenu}
+        >
+          <HamburgerMenuIcon />
+        </button>
+
+        {/* Desktop navbar links */}
         <ul className="hidden w-full items-center justify-center xl:flex">
           <CustomLink variant={"navbarLink"} href="/">
             Home
@@ -109,26 +130,37 @@ const Navbar = () => {
           </CustomLink>
         </ul>
 
-        {/* Hamburger menu on mobile screens */}
-        <button
-          className="flex w-fit items-center justify-center justify-self-end xl:hidden"
-          onClick={handleToggleMenu}
-        >
-          <HamburgerMenuIcon />
-        </button>
-
-        {/* 
-        Login & sign up buttons 
-        TODOS:
-          1. Create login & signup modals when either buttons is clicked.
-      */}
+        {/* Login & sign up buttons */}
         <div className="hidden w-full justify-end gap-4 xl:flex">
-          <Button className="max-w-[120px]">Login</Button>
+          <Button className="max-w-[120px]" onClick={handleToggleLogInModal}>
+            Login
+          </Button>
 
           <Button className="max-w-[120px]" variant={"secondary"}>
             Sign Up
           </Button>
         </div>
+
+        {toggleLogInModal && (
+          <div
+            className="fixed inset-0 z-[998] h-[100svh] w-full bg-primary-default/50 backdrop-blur-sm"
+            onClick={handleToggleLogInModal}
+          />
+        )}
+
+        {/* Login modal */}
+        <AnimatePresence>
+          {toggleLogInModal && (
+            <LazyMotion features={domAnimation}>
+              <LogInModalMotion
+                initial={{ opacity: 0, translateY: "50px" }}
+                animate={{ opacity: 1, translateY: "0px" }}
+                exit={{ opacity: 0, translateY: "50px" }}
+                transition={{ type: "tween", duration: 0.2 }}
+              />
+            </LazyMotion>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );
