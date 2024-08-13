@@ -141,14 +141,15 @@ const Navbar = () => {
           </Button>
         </div>
 
+        {/* backgronud for Log In modal */}
         {toggleLogInModal && (
           <div
-            className="fixed inset-0 z-[998] h-[100svh] w-full bg-primary-default/50 backdrop-blur-sm"
+            className="fixed inset-0 z-[998] h-[100svh] w-full bg-transparent"
             onClick={handleToggleLogInModal}
           />
         )}
 
-        {/* Login modal */}
+        {/* Log In modal */}
         <AnimatePresence>
           {toggleLogInModal && (
             <LazyMotion features={domAnimation}>
