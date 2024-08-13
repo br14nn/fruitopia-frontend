@@ -22,13 +22,17 @@ interface InputProps
     VariantProps<typeof inputVariants> {}
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ variant, className, type = "text", ...props }, ref) => {
+  (
+    { variant, className, type = "text", autoComplete = "off", ...props },
+    ref,
+  ) => {
     return (
       <input
         className={cn(inputVariants({ variant, className }))}
         type={type}
         ref={ref}
         {...props}
+        autoComplete={autoComplete}
       />
     );
   },
