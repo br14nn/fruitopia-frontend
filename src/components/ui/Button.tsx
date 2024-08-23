@@ -11,6 +11,8 @@ const buttonVariants = cva(
           "rounded-md bg-primary-default text-secondary-default transition-colors duration-200 hover:bg-primary-900",
         secondary:
           "rounded-md bg-secondary-default text-primary-default transition-colors duration-200 hover:bg-secondary-200",
+        accent:
+          "rounded-md bg-accent-default text-primary-default transition-colors duration-200 hover:bg-accent-600",
       },
     },
     defaultVariants: {

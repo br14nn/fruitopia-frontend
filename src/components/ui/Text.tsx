@@ -11,6 +11,7 @@ const textVariants = cva("w-fit leading-none text-secondary-default", {
     },
     size: {
       default: "text-base",
+      base: "text-base md:text-md",
       medium: "text-md md:text-lg xl:text-xl",
       large: "text-lg sm:text-xl md:text-2xl xl:text-3xl 2xl:text-4xl",
     },
