@@ -3,14 +3,27 @@
 import React from "react";
 import SearchIcon from "./svgs/SearchIcon";
 import { cn } from "@/utils/utils";
+import useProductsStore from "@/utils/store/products-store";
 
 interface SearchBarProps {
   className?: string;
 }
 
 const SearchBar = ({ className }: SearchBarProps) => {
+  const setData = useProductsStore((state) => state.setData);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    setData([
+      {
+        id: 1,
+        name: "test",
+        category: "SPRING",
+        image: "/",
+        price: 255.55,
+      },
+    ]);
   };
 
   return (

@@ -8,6 +8,7 @@ import GithubLogo from "@/assets/images/github-logo.png";
 import LinkedinLogo from "@/assets/images/linkedin-logo.png";
 import CopyrightImg from "@/assets/images/copyright.png";
 import FruitopiaNavbarLogo from "@/assets/images/fruitopia-navbar-logo.png";
+import TestProductImage from "@/assets/images/product-blueberry.jpg";
 
 export {
   SpringFruitImg,
@@ -20,4 +21,5 @@ export {
   LinkedinLogo,
   CopyrightImg,
   FruitopiaNavbarLogo,
+  TestProductImage,
 };
