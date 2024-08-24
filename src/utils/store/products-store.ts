@@ -7,6 +7,7 @@ interface ProductsState {
   category?: "WINTER" | "SUMMER" | "SPRING" | "FALL";
   orderPriceBy?: "asc" | "desc";
   setData: (data: IProduct[]) => void;
+  setKeyword: (input: string) => void;
 }
 
 const useProductsStore = create<ProductsState>()(
@@ -15,7 +16,8 @@ const useProductsStore = create<ProductsState>()(
     keyword: "",
     category: undefined,
     orderPriceBy: undefined,
-    setData: (data) => set((state) => ({ data: data })),
+    setData: (data) => set(() => ({ data: data })),
+    setKeyword: (input) => set(() => ({ keyword: input })),
   })),
 );
 

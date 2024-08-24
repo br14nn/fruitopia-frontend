@@ -6,7 +6,7 @@ import { findAllProducts } from "@/utils/CRUD/READ";
 import useProductsStore from "@/utils/store/products-store";
 
 const ProductsListRenderer = () => {
-  const { data, keyword, category, orderPriceBy, setData } = useProductsStore(
+  const { data, setData, keyword, category, orderPriceBy } = useProductsStore(
     (state) => state,
   );
 
