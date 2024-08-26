@@ -8,6 +8,7 @@ interface ProductsState {
   orderPriceBy?: "asc" | "desc";
   setData: (data: IProduct[]) => void;
   setKeyword: (input: string) => void;
+  setCategory: (input: ProductsState["category"]) => void;
 }
 
 const useProductsStore = create<ProductsState>()(
@@ -18,6 +19,7 @@ const useProductsStore = create<ProductsState>()(
     orderPriceBy: undefined,
     setData: (data) => set(() => ({ data: data })),
     setKeyword: (input) => set(() => ({ keyword: input })),
+    setCategory: (input) => set(() => ({ category: input })),
   })),
 );
 

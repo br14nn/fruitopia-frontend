@@ -19,11 +19,11 @@ const ProductsListRenderer = () => {
       );
 
       if (!error) setData(message);
-      else console.error(error);
+      else return console.error(error);
     };
 
     getData();
-  }, []);
+  }, [category, orderPriceBy]);
 
   return data.map((product) => (
     <ProductCard

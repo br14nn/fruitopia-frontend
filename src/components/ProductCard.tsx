@@ -31,7 +31,7 @@ const ProductCard = ({ image, name, price }: ProductCardProps) => {
 
         <Button
           id="addToCardButton"
-          className="py-2 text-sm font-medium xl:py-3 xl:text-base"
+          className="py-2 text-base font-medium xl:py-3"
           variant={"accent"}
         >
           Add To Cart
