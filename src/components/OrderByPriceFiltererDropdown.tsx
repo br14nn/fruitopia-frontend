@@ -12,26 +12,26 @@ import Button from "@/components/ui/Button";
 import RoundedTriangularIcon from "@/components/svgs/RoundedTriangularIcon";
 import useProductsStore from "@/utils/store/products-store";
 
-const CategoryFiltererDropdown = () => {
+const OrderByPriceFiltererDropdown = () => {
   const dropdownRef = useRef<any>(null);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
-  const category = useProductsStore((state) => state.category);
-  const setCategory = useProductsStore((state) => state.setCategory);
+  const orderPriceBy = useProductsStore((state) => state.orderPriceBy);
+  const setOrderPriceBy = useProductsStore((state) => state.setOrderPriceBy);
   const [icon, animateIcon] = useAnimate();
   const [dropdownButton, animateDropdownButton] = useAnimate();
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     const { id, name } = e.currentTarget;
 
-    if (id === "categoryDropdownToggleButton") {
+    if (id === "orderPriceByDropdownToggleButton") {
       setShowDropdown((oldVal) => !oldVal);
     }
 
-    if (name === "categoryButton") {
-      if (id === category) {
-        setCategory(undefined);
+    if (name === "orderPriceByButton") {
+      if (id === orderPriceBy) {
+        setOrderPriceBy(undefined);
       } else {
-        setCategory(id as "WINTER" | "SUMMER" | "SPRING" | "FALL");
+        setOrderPriceBy(id as "asc" | "desc");
       }
 
       setShowDropdown(false);
@@ -74,15 +74,15 @@ const CategoryFiltererDropdown = () => {
       <div className="relative" ref={dropdownRef}>
         <Button
           className="relative z-50 flex justify-between px-4 py-2"
-          id="categoryDropdownToggleButton"
+          id="orderPriceByDropdownToggleButton"
           variant={"secondary"}
           onClick={handleClick}
           ref={dropdownButton}
         >
           <p>
-            {category
-              ? `${category.slice(0, 1)}${category.slice(1).toLowerCase()}`
-              : "Category"}
+            {orderPriceBy === "asc" && "Lowest First"}
+            {orderPriceBy === "desc" && "Highest First"}
+            {!orderPriceBy && "Sort Price"}
           </p>
 
           <m.div className="origin-center" ref={icon}>
@@ -100,43 +100,23 @@ const CategoryFiltererDropdown = () => {
               className="absolute z-40 flex w-full origin-top flex-col divide-y divide-secondary-200 overflow-hidden rounded-b-md"
             >
               <Button
-                id="SPRING"
+                id="asc"
                 className="rounded-none py-2"
                 variant={"secondary"}
-                name="categoryButton"
+                name="orderPriceByButton"
                 onClick={handleClick}
               >
-                Spring
+                Lowest First
               </Button>
 
               <Button
-                id="SUMMER"
+                id="desc"
                 className="rounded-none py-2"
                 variant={"secondary"}
-                name="categoryButton"
+                name="orderPriceByButton"
                 onClick={handleClick}
               >
-                Summer
-              </Button>
-
-              <Button
-                id="FALL"
-                className="rounded-none py-2"
-                variant={"secondary"}
-                name="categoryButton"
-                onClick={handleClick}
-              >
-                Fall
-              </Button>
-
-              <Button
-                id="WINTER"
-                className="rounded-none py-2"
-                variant={"secondary"}
-                name="categoryButton"
-                onClick={handleClick}
-              >
-                Winter
+                Highest First
               </Button>
             </m.div>
           )}
@@ -146,4 +126,4 @@ const CategoryFiltererDropdown = () => {
   );
 };
 
-export default CategoryFiltererDropdown;
+export default OrderByPriceFiltererDropdown;

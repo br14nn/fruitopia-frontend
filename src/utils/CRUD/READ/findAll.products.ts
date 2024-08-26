@@ -7,7 +7,7 @@ export default async function findAllProducts(
 ) {
   try {
     const { data } = await axios.get(
-      `http://localhost:3333/api/products?${keyword ? `keyword=${keyword}&` : ""}${category ? `category=${category}&` : ""}${orderPriceBy ? `orderPriceBy=${orderPriceBy}&` : ""}`,
+      `http://localhost:3333/api/products?${keyword ? `keyword=${keyword}&` : ""}${category ? `category=${category}&` : ""}${orderPriceBy ? `order-price-by=${orderPriceBy}&` : ""}`,
     );
 
     return data;

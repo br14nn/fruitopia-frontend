@@ -9,6 +9,7 @@ interface ProductsState {
   setData: (data: IProduct[]) => void;
   setKeyword: (input: string) => void;
   setCategory: (input: ProductsState["category"]) => void;
+  setOrderPriceBy: (input: ProductsState["orderPriceBy"]) => void;
 }
 
 const useProductsStore = create<ProductsState>()(
@@ -20,6 +21,7 @@ const useProductsStore = create<ProductsState>()(
     setData: (data) => set(() => ({ data: data })),
     setKeyword: (input) => set(() => ({ keyword: input })),
     setCategory: (input) => set(() => ({ category: input })),
+    setOrderPriceBy: (input) => set(() => ({ orderPriceBy: input })),
   })),
 );
 
