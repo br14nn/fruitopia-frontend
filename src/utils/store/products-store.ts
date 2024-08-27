@@ -3,13 +3,14 @@ import { devtools } from "zustand/middleware";
 
 interface ProductsState {
   data: IProduct[];
-  keyword?: string;
-  category?: "WINTER" | "SUMMER" | "SPRING" | "FALL";
-  orderPriceBy?: "asc" | "desc";
+  keyword?: string | "";
+  category?: "WINTER" | "SUMMER" | "SPRING" | "FALL" | "";
+  orderPriceBy?: "asc" | "desc" | "";
   setData: (data: IProduct[]) => void;
   setKeyword: (input: string) => void;
   setCategory: (input: ProductsState["category"]) => void;
   setOrderPriceBy: (input: ProductsState["orderPriceBy"]) => void;
+  resetFilters: () => void;
 }
 
 const useProductsStore = create<ProductsState>()(
@@ -22,6 +23,12 @@ const useProductsStore = create<ProductsState>()(
     setKeyword: (input) => set(() => ({ keyword: input })),
     setCategory: (input) => set(() => ({ category: input })),
     setOrderPriceBy: (input) => set(() => ({ orderPriceBy: input })),
+    resetFilters: () =>
+      set(() => ({
+        keyword: "",
+        category: "",
+        orderPriceBy: "",
+      })),
   })),
 );
 

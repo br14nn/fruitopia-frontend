@@ -4,10 +4,21 @@ import useProductsStore from "@/utils/store/products-store";
 import Dropdown from "@/components/ui/Dropdown";
 
 const OrderByPriceFiltererDropdown = () => {
+  const orderPriceBy = useProductsStore((state) => state.orderPriceBy);
   const setOrderPriceBy = useProductsStore((state) => state.setOrderPriceBy);
 
   const handleChange = (data: string) => {
     setOrderPriceBy(data as "asc" | "desc");
+  };
+
+  const handlePlaceholder = (): string => {
+    if (orderPriceBy === "asc") {
+      return "Lowest First";
+    } else if (orderPriceBy === "desc") {
+      return "Highest First";
+    } else {
+      return "Sort Price";
+    }
   };
 
   return (
@@ -17,9 +28,9 @@ const OrderByPriceFiltererDropdown = () => {
         { id: "desc", name: "Highest First" },
       ]}
       onChange={handleChange}
-    >
-      <p className="truncate">Sort Price</p>
-    </Dropdown>
+      value={orderPriceBy}
+      placeholder={handlePlaceholder()}
+    ></Dropdown>
   );
 };
 

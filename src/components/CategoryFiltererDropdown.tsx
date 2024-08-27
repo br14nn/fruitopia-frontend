@@ -4,6 +4,7 @@ import Dropdown from "@/components/ui/Dropdown";
 import useProductsStore from "@/utils/store/products-store";
 
 const CategoryFiltererDropdown = () => {
+  const category = useProductsStore((state) => state.category);
   const setCategory = useProductsStore((state) => state.setCategory);
 
   const handleChange = (data: string) => {
@@ -18,10 +19,14 @@ const CategoryFiltererDropdown = () => {
         { id: "FALL", name: "Fall" },
         { id: "WINTER", name: "Winter" },
       ]}
+      placeholder={
+        category
+          ? `${category.slice(0, 1)}${category.slice(1).toLocaleLowerCase()}`
+          : "Choose Category"
+      }
+      value={category}
       onChange={handleChange}
-    >
-      <p className="truncate">Choose a Category</p>
-    </Dropdown>
+    />
   );
 };
 

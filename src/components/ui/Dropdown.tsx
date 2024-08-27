@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, forwardRef } from "react";
+import { useEffect, useState } from "react";
 import {
   m,
   LazyMotion,
@@ -13,18 +13,24 @@ import Button from "@/components/ui/Button";
 import RoundedTriangularIcon from "@/components/svgs/RoundedTriangularIcon";
 
 interface DropdownButtonProps {
-  children: React.ReactNode;
+  placeholder: string;
   options: { id: string; name: string }[];
+  value?: any;
   onChange: (option: string) => void;
 }
 
-const Dropdown = ({ children, options, onChange }: DropdownButtonProps) => {
+const Dropdown = ({
+  placeholder,
+  options,
+  value,
+  onChange,
+}: DropdownButtonProps) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [option, setOption] = useState<string>("");
   const [scope, animate] = useAnimate();
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    const { id, name, value } = e.currentTarget;
+    const { id, name } = e.currentTarget;
 
     if (id === "dropdownButton") {
       setShowMenu((oldVal) => !oldVal);
@@ -34,11 +40,11 @@ const Dropdown = ({ children, options, onChange }: DropdownButtonProps) => {
       setShowMenu(false);
     }
 
-    if (option === value) {
+    if (option === id) {
       setOption("");
       onChange("");
     } else if (name === "dropdownOption") {
-      setOption(value);
+      setOption(id);
       onChange(id);
     }
   };
@@ -87,7 +93,7 @@ const Dropdown = ({ children, options, onChange }: DropdownButtonProps) => {
           variant={"secondary"}
           onClick={handleClick}
         >
-          {option ? <p className="truncate">{option}</p> : children}
+          <p className="truncate">{placeholder}</p>
           <div id="dropdownIcon" className="origin-center">
             <RoundedTriangularIcon />
           </div>
@@ -111,10 +117,9 @@ const Dropdown = ({ children, options, onChange }: DropdownButtonProps) => {
                   key={nanoid()}
                   className="rounded-none py-2"
                   id={data.id}
-                  variant={option === data.name ? "secondary_400" : "secondary"}
+                  variant={value === data.id ? "secondary_400" : "secondary"}
                   name="dropdownOption"
                   onClick={handleClick}
-                  value={data.name}
                 >
                   {data.name}
                 </Button>
