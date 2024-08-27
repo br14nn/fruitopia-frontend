@@ -1,6 +1,7 @@
 import CategoryFiltererDropdown from "@/components/CategoryFiltererDropdown";
 import OrderByPriceFiltererDropdown from "@/components/OrderByPriceFiltererDropdown";
 import ProductsListRenderer from "@/components/ProductsListRenderer";
+import ResetFiltersButton from "@/components/ResetFiltersButton";
 import SearchBar from "@/components/SearchBar";
 import Text from "@/components/ui/Text";
 
@@ -17,6 +18,7 @@ const ProductsPage = () => {
         <div className="grid w-full grid-cols-3 gap-4">
           <CategoryFiltererDropdown />
           <OrderByPriceFiltererDropdown />
+          <ResetFiltersButton />
         </div>
       </div>
 
