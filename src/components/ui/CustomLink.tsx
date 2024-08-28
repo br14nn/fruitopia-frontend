@@ -39,4 +39,6 @@ const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
   },
 );
 
+CustomLink.displayName = "CustomLink";
+
 export default CustomLink;
