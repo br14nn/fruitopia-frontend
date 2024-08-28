@@ -10,6 +10,9 @@ const ResetFiltersButton = () => {
   const resetFilters = useProductsStore((state) => state.resetFilters);
 
   const handleClick = () => {
+    const searchBar = document.getElementById("searchBar") as HTMLFormElement;
+
+    searchBar.reset();
     resetFilters();
   };
 

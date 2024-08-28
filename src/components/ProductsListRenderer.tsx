@@ -23,7 +23,7 @@ const ProductsListRenderer = () => {
     };
 
     getData();
-  }, [category, orderPriceBy]);
+  }, [keyword, category, orderPriceBy]);
 
   return data.map((product) => (
     <ProductCard

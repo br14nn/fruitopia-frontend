@@ -4,8 +4,8 @@ import { useState } from "react";
 import { m, LazyMotion, AnimatePresence, domAnimation } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import CustomLink from "./ui/CustomLink";
-import Button from "./ui/Button";
+import CustomLink from "@/components/ui/CustomLink";
+import SignInWIthGoogleButton from "@/components/SignInWIthGoogleButton";
 import HamburgerMenuIcon from "./svgs/HamburgerMenuIcon";
 import CloseIcon from "./svgs/CloseIcon";
 import { FruitopiaNavbarLogo } from "@/utils/images";
@@ -82,14 +82,6 @@ const Navbar = () => {
                 >
                   About Us
                 </CustomLink>
-
-                <div className="mt-4 flex w-full flex-col items-center justify-center gap-2 sm:flex-row xl:hidden">
-                  <Button className="max-w-[120px]">Log In</Button>
-
-                  <Button className="max-w-[120px]" variant={"secondary"}>
-                    Sign Up
-                  </Button>
-                </div>
               </m.ul>
             </LazyMotion>
           )}
@@ -103,29 +95,19 @@ const Navbar = () => {
           <HamburgerMenuIcon />
         </button>
 
-        {/* Desktop navbar links */}
         <ul className="hidden w-full items-center justify-center xl:flex">
           <CustomLink variant={"navbarLink"} href="/">
             Home
           </CustomLink>
-
           <CustomLink variant={"navbarLink"} href="/products">
             Products
           </CustomLink>
-
           <CustomLink variant={"navbarLink"} href="/#aboutUs">
             About Us
           </CustomLink>
         </ul>
 
-        {/* Login & sign up buttons */}
-        <div className="hidden w-full justify-end gap-4 xl:flex">
-          <Button className="max-w-[120px]">Login</Button>
-
-          <Button className="max-w-[120px]" variant={"secondary"}>
-            Sign Up
-          </Button>
-        </div>
+        <SignInWIthGoogleButton />
       </div>
     </nav>
   );

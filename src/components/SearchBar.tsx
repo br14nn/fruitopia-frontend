@@ -1,39 +1,32 @@
 "use client";
 
-import SearchIcon from "./svgs/SearchIcon";
-import { findAllProducts } from "@/utils/CRUD/READ";
+import SearchIcon from "@/components/svgs/SearchIcon";
 import { cn } from "@/utils/utils";
 import useProductsStore from "@/utils/store/products-store";
+import debounce from "lodash.debounce";
 
 interface SearchBarProps {
   className?: string;
 }
 
 const SearchBar = ({ className }: SearchBarProps) => {
-  const { setData, keyword, setKeyword, category, orderPriceBy } =
-    useProductsStore((state) => state);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const { message, error } = await findAllProducts(
-      keyword,
-      category,
-      orderPriceBy,
-    );
-
-    if (!error) setData(message);
-    else console.error(error);
-  };
+  const setKeyword = useProductsStore((state) => state.setKeyword);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.currentTarget.value;
+    const value = e?.target?.value;
 
     setKeyword(value);
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
+  const debounceHandleChange = debounce(handleChange, 500);
+
   return (
     <form
+      id="searchBar"
       className={cn(
         "flex w-full items-center overflow-hidden rounded-md",
         className,
@@ -44,13 +37,8 @@ const SearchBar = ({ className }: SearchBarProps) => {
         className="flex-grow bg-secondary-950 px-3 py-2 text-secondary-default outline-none transition-colors duration-300 focus:bg-secondary-900"
         type="text"
         placeholder="Search..."
-        onChange={handleChange}
-        value={keyword}
+        onChange={debounceHandleChange}
       />
-
-      <button className="flex aspect-square w-10 items-center justify-center bg-secondary-default p-2 transition-colors duration-200 hover:bg-secondary-200">
-        <SearchIcon />
-      </button>
     </form>
   );
 };

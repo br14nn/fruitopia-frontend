@@ -17,8 +17,8 @@ const useProductsStore = create<ProductsState>()(
   devtools((set) => ({
     data: [],
     keyword: "",
-    category: undefined,
-    orderPriceBy: undefined,
+    category: "",
+    orderPriceBy: "",
     setData: (data) => set(() => ({ data: data })),
     setKeyword: (input) => set(() => ({ keyword: input })),
     setCategory: (input) => set(() => ({ category: input })),
