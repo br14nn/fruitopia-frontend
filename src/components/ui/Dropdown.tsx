@@ -26,7 +26,6 @@ const Dropdown = ({
   onChange,
 }: DropdownButtonProps) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [option, setOption] = useState<string>("");
   const [scope, animate] = useAnimate();
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -40,11 +39,9 @@ const Dropdown = ({
       setShowMenu(false);
     }
 
-    if (option === id) {
-      setOption("");
+    if (value === id) {
       onChange("");
     } else if (name === "dropdownOption") {
-      setOption(id);
       onChange(id);
     }
   };
