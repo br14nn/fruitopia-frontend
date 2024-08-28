@@ -12,7 +12,7 @@ const ProductsPage = () => {
         PRODUCTS
       </Text>
 
-      <div className="mt-4 flex w-full flex-col gap-4">
+      <div className="mt-4 flex w-full flex-col gap-4 xl:flex-row">
         <SearchBar className="lg:max-w-[500px]" />
 
         <div className="grid w-full grid-cols-3 gap-4">
