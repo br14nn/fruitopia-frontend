@@ -3,22 +3,20 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
-import GoogleLogoIcon from "@/components/svgs/GoogleLogoIcon";
 import { createClient } from "@/utils/supabase/client";
+import { revalidateAllData } from "@/utils/revalidation";
 import useUserStore from "@/utils/store/user-store";
 
-const SignInWIthGoogleButton = () => {
+const LogoutButton = () => {
   const router = useRouter();
   const supabase = createClient();
   const { user, setUser } = useUserStore((state) => state);
 
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: "http://localhost:3000/auth/callback",
-      },
-    });
+  const handleClick = async () => {
+    await supabase.auth.signOut();
+    revalidateAllData();
+    router.replace("/");
+    setUser(null);
   };
 
   useEffect(() => {
@@ -36,20 +34,13 @@ const SignInWIthGoogleButton = () => {
     getUser();
   }, []);
 
-  if (!user) {
+  if (user) {
     return (
-      <Button
-        className="flex w-fit gap-2 px-4 py-1"
-        variant={"default"}
-        onClick={handleClick}
-      >
-        Sign In With Google
-        <GoogleLogoIcon />
+      <Button className="px-4 py-1" variant={"danger"} onClick={handleClick}>
+        Logout
       </Button>
     );
-  } else {
-    return null;
   }
 };
 
-export default SignInWIthGoogleButton;
+export default LogoutButton;

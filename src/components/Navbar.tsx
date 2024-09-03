@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import CustomLink from "@/components/ui/CustomLink";
 import SignInWIthGoogleButton from "@/components/SignInWIthGoogleButton";
+import LogoutButton from "@/components/LogoutButton";
 import HamburgerMenuIcon from "./svgs/HamburgerMenuIcon";
 import CloseIcon from "./svgs/CloseIcon";
 import { FruitopiaNavbarLogo } from "@/utils/images";
@@ -40,6 +41,14 @@ const Navbar = () => {
             onClick={handleToggleMenu}
           />
         )}
+
+        {/* Hamburger menu toggler on mobile screens */}
+        <button
+          className="flex w-fit items-center justify-center justify-self-end xl:hidden"
+          onClick={handleToggleMenu}
+        >
+          <HamburgerMenuIcon />
+        </button>
 
         {/* Mobile navbar menu */}
         <AnimatePresence>
@@ -82,18 +91,15 @@ const Navbar = () => {
                 >
                   About Us
                 </CustomLink>
+
+                <div className="mt-4 self-center">
+                  <SignInWIthGoogleButton />
+                  <LogoutButton />
+                </div>
               </m.ul>
             </LazyMotion>
           )}
         </AnimatePresence>
-
-        {/* Hamburger menu toggler on mobile screens */}
-        <button
-          className="flex w-fit items-center justify-center justify-self-end xl:hidden"
-          onClick={handleToggleMenu}
-        >
-          <HamburgerMenuIcon />
-        </button>
 
         <ul className="hidden w-full items-center justify-center xl:flex">
           <CustomLink variant={"navbarLink"} href="/">
@@ -107,7 +113,10 @@ const Navbar = () => {
           </CustomLink>
         </ul>
 
-        <SignInWIthGoogleButton />
+        <div className="hidden justify-self-end xl:block">
+          <SignInWIthGoogleButton />
+          <LogoutButton />
+        </div>
       </div>
     </nav>
   );
