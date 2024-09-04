@@ -36,7 +36,11 @@ const LogoutButton = () => {
 
   if (user) {
     return (
-      <Button className="px-4 py-1" variant={"danger"} onClick={handleClick}>
+      <Button
+        className="w-fit px-4 py-1"
+        variant={"danger"}
+        onClick={handleClick}
+      >
         Logout
       </Button>
     );

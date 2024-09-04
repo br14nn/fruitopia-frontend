@@ -7,8 +7,9 @@ import Image from "next/image";
 import CustomLink from "@/components/ui/CustomLink";
 import SignInWIthGoogleButton from "@/components/SignInWIthGoogleButton";
 import LogoutButton from "@/components/LogoutButton";
-import HamburgerMenuIcon from "./svgs/HamburgerMenuIcon";
-import CloseIcon from "./svgs/CloseIcon";
+import Avatar from "@/components/Avatar";
+import HamburgerMenuIcon from "@/components/svgs/HamburgerMenuIcon";
+import CloseIcon from "@/components/svgs/CloseIcon";
 import { FruitopiaNavbarLogo } from "@/utils/images";
 
 const Navbar = () => {
@@ -54,7 +55,7 @@ const Navbar = () => {
         <AnimatePresence>
           {toggleMenu && (
             <LazyMotion features={domAnimation}>
-              <m.ul
+              <m.div
                 className="item-center fixed right-0 top-0 flex h-[100svh] w-[50%] flex-col bg-accent-default py-4 lg:w-[30%] xl:hidden"
                 initial={{ translateX: "100%" }}
                 animate={{ translateX: "0%" }}
@@ -62,11 +63,15 @@ const Navbar = () => {
                 transition={{ type: "tween", duration: 0.2 }}
               >
                 <button
-                  className="mb-4 mr-4 flex items-center justify-center self-end xl:hidden"
+                  className="mr-4 flex items-center justify-center self-end xl:hidden"
                   onClick={handleToggleMenu}
                 >
                   <CloseIcon />
                 </button>
+
+                <div className="my-4 flex w-full justify-center">
+                  <Avatar />
+                </div>
 
                 <CustomLink
                   variant={"navbarLink"}
@@ -96,7 +101,7 @@ const Navbar = () => {
                   <SignInWIthGoogleButton />
                   <LogoutButton />
                 </div>
-              </m.ul>
+              </m.div>
             </LazyMotion>
           )}
         </AnimatePresence>
@@ -113,8 +118,9 @@ const Navbar = () => {
           </CustomLink>
         </ul>
 
-        <div className="hidden justify-self-end xl:block">
+        <div className="hidden w-full justify-end gap-2 xl:flex">
           <SignInWIthGoogleButton />
+          <Avatar />
           <LogoutButton />
         </div>
       </div>

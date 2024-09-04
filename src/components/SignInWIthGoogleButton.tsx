@@ -1,14 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
 import GoogleLogoIcon from "@/components/svgs/GoogleLogoIcon";
 import { createClient } from "@/utils/supabase/client";
 import useUserStore from "@/utils/store/user-store";
 
 const SignInWIthGoogleButton = () => {
-  const router = useRouter();
   const supabase = createClient();
   const { user, setUser } = useUserStore((state) => state);
 
