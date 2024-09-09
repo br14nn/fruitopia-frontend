@@ -9,7 +9,7 @@ const customLinkVariants = cva("h-fit w-auto leading-none", {
       default:
         "text-blue-500 underline transition-colors duration-200 hover:text-blue-400",
       navbarLink:
-        "px-4 py-4 tracking-widest text-primary-default transition-colors duration-200 hover:bg-primary-default hover:text-secondary-default xl:px-6 xl:py-5",
+        "px-4 py-4 tracking-widest text-primary-default transition-colors duration-200 hover:bg-primary-default hover:text-secondary-default xl:px-6 xl:py-4",
     },
   },
   defaultVariants: {

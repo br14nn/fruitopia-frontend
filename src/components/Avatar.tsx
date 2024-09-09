@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Text from "@/components/ui/Text";
+import BasketIcon from "@/components/svgs/BasketIcon";
+import VerticalLineIcon from "@/components/svgs/VerticalLineIcon";
 import useUserStore from "@/utils/store/user-store";
 
 const Avatar = () => {
@@ -17,12 +20,18 @@ const Avatar = () => {
           width={70}
           height={70}
         />
-        <Text
-          className="w-fit max-w-[150px] truncate font-medium text-primary-default"
-          title={user.user_metadata?.name}
-        >
-          {user.user_metadata?.name}
-        </Text>
+        <div className="flex gap-2">
+          <Text
+            className="w-fit max-w-[150px] truncate font-medium text-primary-default"
+            title={user.user_metadata?.name}
+          >
+            {user.user_metadata?.name}
+          </Text>
+          <VerticalLineIcon />
+          <Link href="/cart">
+            <BasketIcon />
+          </Link>
+        </div>
       </div>
     );
   } else {
