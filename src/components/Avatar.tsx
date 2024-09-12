@@ -6,9 +6,15 @@ import Text from "@/components/ui/Text";
 import BasketIcon from "@/components/svgs/BasketIcon";
 import VerticalLineIcon from "@/components/svgs/VerticalLineIcon";
 import useUserStore from "@/utils/store/user-store";
+import useNavbarStore from "@/utils/store/navbar-store";
 
 const Avatar = () => {
   const user = useUserStore((state) => state.user);
+  const toggleMenu = useNavbarStore((state) => state.toggleMenu);
+
+  const handleClick = () => {
+    toggleMenu();
+  };
 
   if (user) {
     return (
@@ -28,7 +34,7 @@ const Avatar = () => {
             {user.user_metadata?.name}
           </Text>
           <VerticalLineIcon />
-          <Link href="/cart">
+          <Link href="/cart" onClick={handleClick}>
             <BasketIcon />
           </Link>
         </div>

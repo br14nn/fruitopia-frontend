@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { m, LazyMotion, AnimatePresence, domAnimation } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,12 +10,13 @@ import Avatar from "@/components/Avatar";
 import HamburgerMenuIcon from "@/components/svgs/HamburgerMenuIcon";
 import CloseIcon from "@/components/svgs/CloseIcon";
 import { FruitopiaNavbarLogo } from "@/utils/images";
+import useNavbarStore from "@/utils/store/navbar-store";
 
 const Navbar = () => {
-  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
+  const { showMenu, toggleMenu } = useNavbarStore((state) => state);
 
   const handleToggleMenu = () => {
-    setToggleMenu((oldVal) => !oldVal);
+    toggleMenu();
   };
 
   return (
@@ -36,7 +36,7 @@ const Navbar = () => {
         </Link>
 
         {/* background for mobile navbar menu when opened*/}
-        {toggleMenu && (
+        {showMenu && (
           <div
             className="fixed inset-0 h-[100svh] w-full bg-primary-default/50 backdrop-blur-sm xl:hidden"
             onClick={handleToggleMenu}
@@ -53,7 +53,7 @@ const Navbar = () => {
 
         {/* Mobile navbar menu */}
         <AnimatePresence>
-          {toggleMenu && (
+          {showMenu && (
             <LazyMotion features={domAnimation}>
               <m.div
                 className="item-center fixed right-0 top-0 flex h-[100svh] w-[50%] flex-col bg-accent-default py-4 lg:w-[30%] xl:hidden"

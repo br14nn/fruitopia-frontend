@@ -6,14 +6,17 @@ import Button from "@/components/ui/Button";
 import { createClient } from "@/utils/supabase/client";
 import { revalidateAllData } from "@/utils/revalidation";
 import useUserStore from "@/utils/store/user-store";
+import useNavbarStore from "@/utils/store/navbar-store";
 
 const LogoutButton = () => {
   const router = useRouter();
   const supabase = createClient();
   const { user, setUser } = useUserStore((state) => state);
+  const toggleMenu = useNavbarStore((state) => state.toggleMenu);
 
   const handleClick = async () => {
     await supabase.auth.signOut();
+    toggleMenu();
     revalidateAllData();
     router.replace("/");
     setUser(null);
