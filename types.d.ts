@@ -5,3 +5,10 @@ interface IProduct {
   category: "WINTER" | "SUMMER" | "FALL" | "SPRING";
   image: string;
 }
+
+interface ICreateUser {
+  id: string;
+  email: string;
+  name: string;
+  avatar_url: string;
+}

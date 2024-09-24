@@ -29,8 +29,7 @@ const LogoutButton = () => {
         error,
       } = await supabase.auth.getUser();
 
-      if (error) console.error(error);
-      else if (!user) setUser(null);
+      if (!user || error) setUser(null);
       else setUser(user);
     };
 
