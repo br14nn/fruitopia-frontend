@@ -3,14 +3,14 @@
 import { useEffect } from "react";
 import Button from "@/components/ui/Button";
 import GoogleLogoIcon from "@/components/svgs/GoogleLogoIcon";
-import { createClient } from "@/utils/supabase/client";
 import useUserStore from "@/utils/store/user-store";
+import { createClient } from "@/utils/supabase/client";
 
 const SignInWIthGoogleButton = () => {
   const supabase = createClient();
   const { user, setUser } = useUserStore((state) => state);
 
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = async () => {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
@@ -20,17 +20,17 @@ const SignInWIthGoogleButton = () => {
   };
 
   useEffect(() => {
-    const getUser = async () => {
+    const userGetter = async () => {
       const {
-        data: { user },
+        data: { user: userData },
         error,
       } = await supabase.auth.getUser();
 
-      if (!user || error) setUser(null);
-      else setUser(user);
+      if (!userData || error) return;
+      else setUser(userData);
     };
 
-    getUser();
+    userGetter();
   }, []);
 
   if (!user) {

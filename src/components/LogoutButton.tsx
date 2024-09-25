@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
-import { createClient } from "@/utils/supabase/client";
 import { revalidateAllData } from "@/utils/revalidation";
 import useUserStore from "@/utils/store/user-store";
 import useNavbarStore from "@/utils/store/navbar-store";
+import { createClient } from "@/utils/supabase/client";
 
 const LogoutButton = () => {
-  const router = useRouter();
   const supabase = createClient();
+  const router = useRouter();
   const { user, setUser } = useUserStore((state) => state);
   const toggleMenu = useNavbarStore((state) => state.toggleMenu);
 
@@ -21,20 +20,6 @@ const LogoutButton = () => {
     router.replace("/");
     setUser(null);
   };
-
-  useEffect(() => {
-    const getUser = async () => {
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.getUser();
-
-      if (!user || error) setUser(null);
-      else setUser(user);
-    };
-
-    getUser();
-  }, []);
 
   if (user) {
     return (
