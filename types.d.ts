@@ -10,5 +10,5 @@ interface ICreateUser {
   id: string;
   email: string;
   name: string;
-  avatar_url: string;
+  picture: string;
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import SearchIcon from "@/components/svgs/SearchIcon";
 import { cn } from "@/utils/utils";
 import useProductsStore from "@/utils/store/products-store";
 import debounce from "lodash.debounce";

@@ -5,6 +5,7 @@ import Button from "@/components/ui/Button";
 import GoogleLogoIcon from "@/components/svgs/GoogleLogoIcon";
 import useUserStore from "@/utils/store/user-store";
 import { createClient } from "@/utils/supabase/client";
+import { createUser } from "@/utils/CRUD/CREATE";
 
 const SignInWIthGoogleButton = () => {
   const supabase = createClient();
@@ -26,8 +27,15 @@ const SignInWIthGoogleButton = () => {
         error,
       } = await supabase.auth.getUser();
 
-      if (!userData || error) return;
-      else setUser(userData);
+      if (userData || !error) {
+        setUser(userData);
+        await createUser({
+          id: userData?.id as string,
+          email: userData?.email as string,
+          name: userData?.user_metadata.name,
+          picture: userData?.user_metadata.picture,
+        });
+      } else return;
     };
 
     userGetter();

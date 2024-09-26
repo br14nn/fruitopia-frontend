@@ -11,7 +11,7 @@ export default async function findAllProducts(
     );
 
     return data;
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    console.error(error.response.data.message);
   }
 }
