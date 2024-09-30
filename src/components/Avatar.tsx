@@ -18,7 +18,7 @@ const Avatar = () => {
 
   if (user) {
     return (
-      <div className="flex flex-col items-center gap-2 xl:flex-row-reverse">
+      <div className="flex w-full flex-col items-center gap-2 xl:w-fit xl:flex-row-reverse">
         <Image
           className="aspect-square w-[70px] rounded-full object-cover object-center xl:w-[32px]"
           src={user.user_metadata?.picture}
@@ -26,9 +26,9 @@ const Avatar = () => {
           width={70}
           height={70}
         />
-        <div className="flex gap-2">
+        <div className="flex w-full justify-center gap-2 px-4 xl:px-0">
           <Text
-            className="w-fit max-w-[150px] truncate font-medium text-primary-default"
+            className="w-fit truncate font-medium text-primary-default"
             title={user.user_metadata?.name}
           >
             {user.user_metadata?.name}
