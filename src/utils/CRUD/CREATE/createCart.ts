@@ -3,9 +3,10 @@
 import axios from "axios";
 import { apiURL } from "@/utils/utils";
 
-export default async function (createUser: ICreateUser) {
+export default async function (createCart: ICreateCart) {
   try {
-    await axios.post(`${apiURL}/users`, createUser);
+    const { data } = await axios.post(`${apiURL}/cart`, createCart);
+    console.log(data);
   } catch (error: any) {
     console.error(error.response.data.message);
   }

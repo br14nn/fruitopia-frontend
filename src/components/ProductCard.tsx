@@ -1,14 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import Text from "@/components/ui/Text";
 import Button from "@/components/ui/Button";
+import useUserStore from "@/utils/store/user-store";
+import createCart from "@/utils/CRUD/CREATE/createCart";
 
 interface ProductCardProps {
+  id: number;
   image: string;
   name: string;
   price: number;
 }
 
-const ProductCard = ({ image, name, price }: ProductCardProps) => {
+const ProductCard = ({ id, image, name, price }: ProductCardProps) => {
+  const user = useUserStore((state) => state.user);
+
+  const handleClick = async () => {
+    await createCart({ userID: user?.id, productID: id });
+  };
+
   return (
     <div className="relative flex w-full flex-col items-center overflow-hidden rounded-md">
       <Image
@@ -33,6 +44,7 @@ const ProductCard = ({ image, name, price }: ProductCardProps) => {
           id="addToCardButton"
           className="py-2 text-base font-medium xl:py-3"
           variant={"accent"}
+          onClick={handleClick}
         >
           Add To Cart
         </Button>

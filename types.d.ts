@@ -12,3 +12,8 @@ interface ICreateUser {
   name: string;
   picture: string;
 }
+
+interface ICreateCart {
+  userID?: string;
+  productID?: number;
+}

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { apiURL } from "@/utils/utils";
 
 export default async function findAllProducts(
   keyword?: string,
@@ -7,7 +8,7 @@ export default async function findAllProducts(
 ) {
   try {
     const { data } = await axios.get(
-      `http://localhost:3333/api/products?${keyword && `keyword=${keyword}&`}${category && `category=${category}&`}${orderPriceBy && `order-price-by=${orderPriceBy}&`}`,
+      `${apiURL}/products?${keyword && `keyword=${keyword}&`}${category && `category=${category}&`}${orderPriceBy && `order-price-by=${orderPriceBy}&`}`,
     );
 
     return data;
