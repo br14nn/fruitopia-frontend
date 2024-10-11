@@ -5,8 +5,22 @@ import { useState } from "react";
 import Button from "@/components/ui/Button";
 import DeleteIcon from "./svgs/DeleteIcon";
 
-const ShoppingCartItem = () => {
-  const [quantity, setQuantity] = useState<number>(0);
+interface ShoppingCartItemProps {
+  id: number;
+  title: string;
+  image: string;
+  qty: number;
+  price: number;
+}
+
+const ShoppingCartItem = ({
+  id,
+  title,
+  image,
+  qty,
+  price,
+}: ShoppingCartItemProps) => {
+  const [quantity, setQuantity] = useState<number>(qty);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
@@ -22,17 +36,15 @@ const ShoppingCartItem = () => {
       <div className="flex w-full max-w-[50%] flex-initial flex-row gap-2">
         <Image
           className="aspect-square w-[35px] rounded-md object-cover object-center lg:w-[48px]"
-          src={
-            "http://127.0.0.1:54321/storage/v1/object/public/product-images/product-orange.jpg"
-          }
+          src={image}
           width={200}
           height={200}
-          alt="#"
+          alt={title}
         />
 
         <div className="w-full flex-grow truncate text-sm lg:text-base">
-          <p className="truncate font-bold">Watermelon</p>
-          <p>P25.00</p>
+          <p className="truncate font-bold">{title}</p>
+          <p>₱{price}</p>
         </div>
       </div>
       <div className="flex w-full max-w-[20%] flex-initial items-center">
@@ -61,7 +73,9 @@ const ShoppingCartItem = () => {
         </div>
       </div>
       <div className="flex w-full max-w-[20%] flex-initial items-center">
-        <p className="text-sm font-bold sm:text-base">₱99999.00</p>
+        <p className="text-sm font-bold sm:text-base">
+          ₱{(quantity * price).toFixed(2)}
+        </p>
       </div>
       <div className="flex w-full max-w-[10%] flex-initial items-center">
         <Button className="w-fit p-2" variant={"secondary"}>

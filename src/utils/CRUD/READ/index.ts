@@ -1,3 +1,4 @@
-import findAllProducts from "./findAll.products";
+import findAllProducts from "./findAllProducts";
+import findUserCart from "./findUserCart";
 
-export { findAllProducts };
+export { findAllProducts, findUserCart };

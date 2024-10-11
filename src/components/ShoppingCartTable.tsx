@@ -1,4 +1,4 @@
-import ShoppingCartItem from "./ShoppingCartItem";
+import ShoppingCartItemRenderer from "./ShoppingCartItemRenderer";
 
 const ShoppingCartTable = () => {
   return (
@@ -20,18 +20,7 @@ const ShoppingCartTable = () => {
         <div className="w-full max-w-[10%] flex-initial"></div>
       </div>
       <div className="flex h-fit max-h-[400px] w-full flex-col gap-4 overflow-y-auto rounded-b-md border-x border-b border-secondary-default px-2 py-4 lg:max-h-[500px]">
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
+        <ShoppingCartItemRenderer />
       </div>
     </div>
   );
