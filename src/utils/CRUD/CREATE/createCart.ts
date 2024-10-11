@@ -7,8 +7,8 @@ import { revalidatePath } from "next/cache";
 export default async function (createCart: ICreateCart) {
   revalidatePath("/cart");
   try {
-    const { data } = await axios.post(`${apiURL}/cart`, createCart);
+    await axios.post(`${apiURL}/cart`, createCart);
   } catch (error: any) {
-    console.error(error.response.data.message);
+    console.error(error.response?.data);
   }
 }

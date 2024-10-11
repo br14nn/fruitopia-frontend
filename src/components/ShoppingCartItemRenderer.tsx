@@ -4,12 +4,13 @@ import { findUserCart } from "@/utils/CRUD/READ";
 
 const ShoppingCartItemRenderer = async () => {
   const { message } = (await findUserCart()) as {
-    message: IFindUserCart[];
+    message?: IFindUserCart[];
+    error?: string;
   };
 
   return (
     <>
-      {message.map((data) => (
+      {message?.map((data) => (
         <ShoppingCartItem
           key={nanoid()}
           id={data.id}

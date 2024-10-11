@@ -15,6 +15,8 @@ export default async function findUserCart() {
 
     return data;
   } catch (error: any) {
-    console.error(error.response.data.message);
+    console.error(error.response?.data);
+
+    return { message: null, error: error.response?.data?.message };
   }
 }
