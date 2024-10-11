@@ -25,9 +25,9 @@ const ShoppingCartItem = ({
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
     if (id === "incrementorButton") {
-      if (quantity < 100) setQuantity((oldVal) => oldVal + 1);
+      if (quantity < 99) setQuantity((oldVal) => oldVal + 1);
     } else if (id === "decrementorButton") {
-      if (quantity > 0) setQuantity((oldVal) => oldVal - 1);
+      if (quantity > 1) setQuantity((oldVal) => oldVal - 1);
     }
   };
 
