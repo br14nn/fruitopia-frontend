@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Button from "@/components/ui/Button";
 import DeleteIcon from "./svgs/DeleteIcon";
+import { updateCartItem } from "@/utils/CRUD/UPDATE";
 
 interface ShoppingCartItemProps {
   id: number;
@@ -14,7 +15,7 @@ interface ShoppingCartItemProps {
 }
 
 const ShoppingCartItem = ({
-  id,
+  id: productID,
   title,
   image,
   qty,
@@ -22,12 +23,19 @@ const ShoppingCartItem = ({
 }: ShoppingCartItemProps) => {
   const [quantity, setQuantity] = useState<number>(qty);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
+
     if (id === "incrementorButton") {
-      if (quantity < 99) setQuantity((oldVal) => oldVal + 1);
+      if (quantity < 99) {
+        setQuantity((oldVal) => oldVal + 1);
+        await updateCartItem(productID, "increment");
+      }
     } else if (id === "decrementorButton") {
-      if (quantity > 1) setQuantity((oldVal) => oldVal - 1);
+      if (quantity > 1) {
+        setQuantity((oldVal) => oldVal - 1);
+        await updateCartItem(productID, "decrement");
+      }
     }
   };
 
