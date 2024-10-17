@@ -1,3 +1,4 @@
+import CheckoutDetailsCard from "@/components/CheckoutDetailsCard";
 import ShoppingCartTable from "@/components/ShoppingCartTable";
 import Text from "@/components/ui/Text";
 
@@ -10,8 +11,9 @@ const CartPage = () => {
       >
         SHOPPING CART
       </Text>
-      <div className="mt-8 flex w-full flex-col">
+      <div className="mt-8 flex w-full flex-col gap-4 lg:flex-row">
         <ShoppingCartTable />
+        <CheckoutDetailsCard />
       </div>
     </main>
   );

@@ -19,7 +19,7 @@ const ShoppingCartTable = () => {
         </div>
         <div className="w-full max-w-[10%] flex-initial"></div>
       </div>
-      <div className="flex h-fit max-h-[400px] w-full flex-col gap-4 overflow-y-auto rounded-b-md border-x border-b border-secondary-default px-2 py-4 lg:max-h-[500px]">
+      <div className="flex h-fit max-h-[400px] w-full flex-col gap-4 overflow-y-auto rounded-b-md border-x border-b border-secondary-default px-2 py-4 lg:max-h-[600px]">
         <ShoppingCartItemRenderer />
       </div>
     </div>
