@@ -1,17 +1,15 @@
 "use server";
 
-import axios from "axios";
 import { apiURL } from "@/utils/utils";
+import axios from "axios";
 import { revalidatePath } from "next/cache";
 
-export default async function updateCartItem(
-  id: number,
-  quantity?: "increment" | "decrement",
-) {
+export default async function deleteCartItem(cartID: number) {
   try {
-    const { data } = await axios.patch(`${apiURL}/cart`, {
-      id: id,
-      quantity: quantity,
+    const { data } = await axios.delete(`${apiURL}/cart`, {
+      data: {
+        id: cartID,
+      },
     });
 
     revalidatePath("/cart");

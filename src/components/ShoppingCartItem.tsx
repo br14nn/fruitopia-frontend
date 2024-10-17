@@ -5,6 +5,8 @@ import { useState, useRef } from "react";
 import Button from "@/components/ui/Button";
 import DeleteIcon from "./svgs/DeleteIcon";
 import { updateCartItem } from "@/utils/CRUD/UPDATE";
+import { deleteCartItem } from "@/utils/CRUD/DELETE";
+import { revalidatePath } from "@/utils/revalidation";
 
 interface ShoppingCartItemProps {
   id: number;
@@ -15,7 +17,7 @@ interface ShoppingCartItemProps {
 }
 
 const ShoppingCartItem = ({
-  id: productID,
+  id: cartID,
   title,
   image,
   qty,
@@ -26,15 +28,19 @@ const ShoppingCartItem = ({
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
 
+    if (id === "delete") {
+      return await deleteCartItem(cartID);
+    }
+
     if (id === "incrementorButton") {
       if (quantity < 99) {
         setQuantity((oldVal) => oldVal + 1);
-        await updateCartItem(productID, "increment");
+        await updateCartItem(cartID, "increment");
       }
     } else if (id === "decrementorButton") {
       if (quantity > 1) {
         setQuantity((oldVal) => oldVal - 1);
-        await updateCartItem(productID, "decrement");
+        await updateCartItem(cartID, "decrement");
       }
     }
   };
@@ -86,7 +92,12 @@ const ShoppingCartItem = ({
         </p>
       </div>
       <div className="flex w-full max-w-[10%] flex-initial items-center">
-        <Button className="w-fit p-2" variant={"secondary"}>
+        <Button
+          className="w-fit p-2"
+          id="delete"
+          variant={"secondary"}
+          onClick={handleClick}
+        >
           <DeleteIcon />
         </Button>
       </div>

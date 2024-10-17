@@ -16,7 +16,6 @@ export default async function findAllProducts(
     return data;
   } catch (error: any) {
     console.error(error.response?.data);
-
     return { message: null, error: error.response?.data?.message };
   }
 }
