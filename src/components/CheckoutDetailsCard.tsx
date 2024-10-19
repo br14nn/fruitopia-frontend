@@ -4,7 +4,7 @@ import Button from "./ui/Button";
 
 const CheckoutDetailsCard = () => {
   return (
-    <div className="flex h-fit w-full flex-col gap-2 rounded-md bg-secondary-default p-2 lg:max-w-[30%]">
+    <div className="flex h-fit w-full max-w-[25rem] flex-col gap-2 self-center rounded-md bg-secondary-default p-2 lg:self-start">
       <div className="flex w-full flex-row justify-between">
         <Text
           className="font-bold tracking-wider text-primary-default"
