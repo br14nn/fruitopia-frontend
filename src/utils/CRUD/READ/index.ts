@@ -1,4 +1,5 @@
 import findAllProducts from "./findAllProducts";
 import findUserCart from "./findUserCart";
+import getCartTotal from "./getCartTotal";
 
-export { findAllProducts, findUserCart };
+export { getCartTotal, findAllProducts, findUserCart };
