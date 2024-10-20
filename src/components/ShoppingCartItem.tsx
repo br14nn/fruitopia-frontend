@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Button from "@/components/ui/Button";
 import DeleteIcon from "./svgs/DeleteIcon";
 import { updateCartItem } from "@/utils/CRUD/UPDATE";
 import { deleteCartItem } from "@/utils/CRUD/DELETE";
-import { revalidatePath } from "@/utils/revalidation";
 
 interface ShoppingCartItemProps {
   id: number;

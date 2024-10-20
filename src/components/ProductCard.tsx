@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Text from "@/components/ui/Text";
 import Button from "@/components/ui/Button";
-import useUserStore from "@/utils/store/user-store";
 import createCart from "@/utils/CRUD/CREATE/createCart";
 
 interface ProductCardProps {
@@ -13,11 +12,14 @@ interface ProductCardProps {
   price: number;
 }
 
-const ProductCard = ({ id, image, name, price }: ProductCardProps) => {
-  const user = useUserStore((state) => state.user);
-
+const ProductCard = ({
+  id: productID,
+  image,
+  name,
+  price,
+}: ProductCardProps) => {
   const handleClick = async () => {
-    await createCart({ userID: user?.id, productID: id });
+    await createCart(productID);
   };
 
   return (

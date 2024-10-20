@@ -1,10 +1,25 @@
-import React from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 import Text from "./ui/Text";
 import Button from "./ui/Button";
 import { getCartTotal } from "@/utils/CRUD/READ";
 
-const CheckoutDetailsCard = async () => {
-  const { message, error } = await getCartTotal();
+const CheckoutDetailsCard = () => {
+  const [cartTotal, setCartTotal] = useState<number>(0);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log("Place order functionality");
+  };
+
+  useEffect(() => {
+    async function GetCartTotal() {
+      const { message } = await getCartTotal();
+      setCartTotal(message.total);
+    }
+
+    GetCartTotal();
+  });
 
   return (
     <div className="flex h-fit w-full max-w-[25rem] flex-col gap-2 self-center rounded-md bg-secondary-default p-2 lg:self-start">
@@ -17,10 +32,10 @@ const CheckoutDetailsCard = async () => {
           TOTAL
         </Text>
         <Text className="w-full truncate text-end font-bold text-primary-default">
-          ₱{message.total}
+          ₱{cartTotal.toFixed(2)}
         </Text>
       </div>
-      <Button className="py-1" variant={"accent"}>
+      <Button className="py-1" variant={"accent"} onClick={handleClick}>
         Place Order
       </Button>
     </div>

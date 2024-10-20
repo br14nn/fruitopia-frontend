@@ -6,18 +6,6 @@ interface IProduct {
   image: string;
 }
 
-interface ICreateUser {
-  id: string;
-  email: string;
-  name: string;
-  picture: string;
-}
-
-interface ICreateCart {
-  userID?: string;
-  productID?: number;
-}
-
 interface IFindUserCart {
   id: number;
   quantity: number;

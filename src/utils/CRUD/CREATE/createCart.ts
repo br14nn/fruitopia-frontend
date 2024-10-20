@@ -1,13 +1,21 @@
 "use server";
 
 import axios from "axios";
-import { apiURL } from "@/utils/utils";
 import { revalidatePath } from "next/cache";
+import { apiURL } from "@/utils/utils";
+import { createClient } from "@/utils/supabase/server";
 
-export default async function (createCart: ICreateCart) {
-  revalidatePath("/cart");
+export default async function (productID: number) {
   try {
-    await axios.post(`${apiURL}/cart`, createCart);
+    const supabase = createClient();
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    await axios.post(`${apiURL}/cart`, { userID: user?.id, productID });
+
+    revalidatePath("/cart");
   } catch (error: any) {
     console.error(error.response?.data);
   }

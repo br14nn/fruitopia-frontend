@@ -27,15 +27,10 @@ const SignInWIthGoogleButton = () => {
         error,
       } = await supabase.auth.getUser();
 
-      if (userData || !error) {
+      if (userData && !error && !user) {
         setUser(userData);
-        await createUser({
-          id: userData?.id as string,
-          email: userData?.email as string,
-          name: userData?.user_metadata.name,
-          picture: userData?.user_metadata.picture,
-        });
-      } else return;
+        await createUser();
+      }
     };
 
     userGetter();
