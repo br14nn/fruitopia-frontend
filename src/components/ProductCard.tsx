@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import toast, { Toaster } from "react-hot-toast";
 import Text from "@/components/ui/Text";
 import Button from "@/components/ui/Button";
 import createCart from "@/utils/CRUD/CREATE/createCart";
@@ -18,8 +19,18 @@ const ProductCard = ({
   name,
   price,
 }: ProductCardProps) => {
+  const notify = () =>
+    toast.success("Added to cart", {
+      position: "bottom-right",
+      duration: 2000,
+      style: {
+        backgroundColor: "#fff",
+      },
+    });
+
   const handleClick = async () => {
     await createCart(productID);
+    notify();
   };
 
   return (
@@ -50,6 +61,7 @@ const ProductCard = ({
         >
           Add To Cart
         </Button>
+        <Toaster />
       </div>
     </div>
   );
