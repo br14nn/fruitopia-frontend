@@ -23,6 +23,7 @@ const ShoppingCartItem = ({
   price,
 }: ShoppingCartItemProps) => {
   const [quantity, setQuantity] = useState<number>(qty);
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
@@ -33,13 +34,17 @@ const ShoppingCartItem = ({
 
     if (id === "incrementorButton") {
       if (quantity < 99) {
-        setQuantity((oldVal) => oldVal + 1);
+        setDisabled(true);
         await updateCartItem(cartID, "increment");
+        setQuantity((oldVal) => oldVal + 1);
+        setDisabled(false);
       }
     } else if (id === "decrementorButton") {
       if (quantity > 1) {
-        setQuantity((oldVal) => oldVal - 1);
+        setDisabled(true);
         await updateCartItem(cartID, "decrement");
+        setQuantity((oldVal) => oldVal - 1);
+        setDisabled(false);
       }
     }
   };
@@ -63,9 +68,10 @@ const ShoppingCartItem = ({
       <div className="flex w-full max-w-[20%] flex-initial items-center">
         <div className="flex w-full max-w-[120px] flex-row justify-between overflow-hidden rounded-full border border-secondary-default">
           <button
-            className="px-1.5 text-secondary-default transition-colors duration-150 hover:bg-secondary-default hover:text-primary-default"
+            className="px-1.5 text-secondary-default transition-colors duration-150 hover:bg-secondary-default hover:text-primary-default disabled:hover:bg-transparent disabled:hover:text-secondary-default"
             id="decrementorButton"
             onClick={handleClick}
+            disabled={disabled}
           >
             -
           </button>
@@ -77,9 +83,10 @@ const ShoppingCartItem = ({
             value={quantity}
           />
           <button
-            className="px-1.5 text-secondary-default transition-colors duration-150 hover:bg-secondary-default hover:text-primary-default"
+            className="px-1.5 text-secondary-default transition-colors duration-150 hover:bg-secondary-default hover:text-primary-default disabled:hover:bg-transparent disabled:hover:text-secondary-default"
             id="incrementorButton"
             onClick={handleClick}
+            disabled={disabled}
           >
             +
           </button>

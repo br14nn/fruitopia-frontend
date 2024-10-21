@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
 
 interface ProductsState {
   data: IProduct[];
@@ -13,23 +12,21 @@ interface ProductsState {
   resetFilters: () => void;
 }
 
-const useProductsStore = create<ProductsState>()(
-  devtools((set) => ({
-    data: [],
-    keyword: "",
-    category: "",
-    orderPriceBy: "",
-    setData: (data) => set(() => ({ data: data })),
-    setKeyword: (input) => set(() => ({ keyword: input })),
-    setCategory: (input) => set(() => ({ category: input })),
-    setOrderPriceBy: (input) => set(() => ({ orderPriceBy: input })),
-    resetFilters: () =>
-      set(() => ({
-        keyword: "",
-        category: "",
-        orderPriceBy: "",
-      })),
-  })),
-);
+const useProductsStore = create<ProductsState>()((set) => ({
+  data: [],
+  keyword: "",
+  category: "",
+  orderPriceBy: "",
+  setData: (data) => set(() => ({ data: data })),
+  setKeyword: (input) => set(() => ({ keyword: input })),
+  setCategory: (input) => set(() => ({ category: input })),
+  setOrderPriceBy: (input) => set(() => ({ orderPriceBy: input })),
+  resetFilters: () =>
+    set(() => ({
+      keyword: "",
+      category: "",
+      orderPriceBy: "",
+    })),
+}));
 
 export default useProductsStore;
