@@ -1,3 +1,4 @@
 import deleteCartItem from "./deleteCartItem";
+import deleteCartCheckout from "./deleteCartCheckout";
 
-export { deleteCartItem };
+export { deleteCartItem, deleteCartCheckout };

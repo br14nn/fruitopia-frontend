@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import Text from "./ui/Text";
 import Button from "./ui/Button";
 import { getCartTotal } from "@/utils/CRUD/READ";
+import { deleteCartCheckout } from "@/utils/CRUD/DELETE";
 
 const CheckoutDetailsCard = () => {
   const [cartTotal, setCartTotal] = useState<number>(0);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log("Place order functionality");
+  const handleClick = async () => {
+    await deleteCartCheckout();
   };
 
   useEffect(() => {
@@ -17,7 +18,6 @@ const CheckoutDetailsCard = () => {
       const { message } = await getCartTotal();
       setCartTotal(message.total);
     }
-
     GetCartTotal();
   });
 
@@ -35,7 +35,11 @@ const CheckoutDetailsCard = () => {
           ₱{cartTotal.toFixed(2)}
         </Text>
       </div>
-      <Button className="py-1" variant={"accent"} onClick={handleClick}>
+      <Button
+        className="py-1 font-medium"
+        variant={"accent"}
+        onClick={handleClick}
+      >
         Place Order
       </Button>
     </div>
