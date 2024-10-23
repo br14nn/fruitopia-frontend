@@ -1,16 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { usePathname } from "next/navigation";
 import Text from "./ui/Text";
 import Button from "./ui/Button";
 import { getCartTotal } from "@/utils/CRUD/READ";
 import { deleteCartCheckout } from "@/utils/CRUD/DELETE";
 
+const notifySuccess = () =>
+  toast.success("Order complete", {
+    id: "notifySuccess",
+    position: "bottom-right",
+  });
+
+const notifyError = () =>
+  toast.error("Your cart is empty", {
+    id: "notifyError",
+    position: "bottom-right",
+  });
+
 const CheckoutDetailsCard = () => {
+  const pathname = usePathname();
   const [cartTotal, setCartTotal] = useState<number>(0);
 
   const handleClick = async () => {
-    await deleteCartCheckout();
+    const { message } = await deleteCartCheckout();
+    console.log(message);
+    if (message.count === 0) notifyError();
+    else notifySuccess();
   };
 
   useEffect(() => {
@@ -20,6 +38,10 @@ const CheckoutDetailsCard = () => {
     }
     GetCartTotal();
   });
+
+  useEffect(() => {
+    toast.dismiss();
+  }, [pathname]);
 
   return (
     <div className="flex h-fit w-full max-w-[25rem] flex-col gap-2 self-center rounded-md bg-secondary-default p-2 lg:self-start">
@@ -42,6 +64,7 @@ const CheckoutDetailsCard = () => {
       >
         Place Order
       </Button>
+      <Toaster />
     </div>
   );
 };

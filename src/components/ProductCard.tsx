@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import toast, { Toaster } from "react-hot-toast";
+import { usePathname } from "next/navigation";
 import Text from "@/components/ui/Text";
 import Button from "@/components/ui/Button";
 import createCart from "@/utils/CRUD/CREATE/createCart";
+import { useEffect } from "react";
 
 interface ProductCardProps {
   id: number;
@@ -13,25 +15,31 @@ interface ProductCardProps {
   price: number;
 }
 
+const notify = () =>
+  toast.success("Added to cart", {
+    position: "bottom-right",
+    duration: 2000,
+    style: {
+      backgroundColor: "#fff",
+    },
+  });
+
 const ProductCard = ({
   id: productID,
   image,
   name,
   price,
 }: ProductCardProps) => {
-  const notify = () =>
-    toast.success("Added to cart", {
-      position: "bottom-right",
-      duration: 2000,
-      style: {
-        backgroundColor: "#fff",
-      },
-    });
+  const pathname = usePathname();
 
   const handleClick = async () => {
     await createCart(productID);
     notify();
   };
+
+  useEffect(() => {
+    toast.dismiss();
+  }, [pathname]);
 
   return (
     <div className="relative flex w-full flex-col items-center overflow-hidden rounded-md">
