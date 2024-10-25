@@ -38,7 +38,7 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   if (!user && request.nextUrl.pathname === "/cart") {
-    return NextResponse.redirect("http://127.0.0.1:3000/");
+    return NextResponse.redirect("https://fruitopia-frontend.vercel.app/");
   }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're
