@@ -13,12 +13,13 @@ const LogoutButton = () => {
   const { user, setUser } = useUserStore((state) => state);
   const toggleMenu = useNavbarStore((state) => state.toggleMenu);
 
-  const handleClick = async () => {
-    await supabase.auth.signOut();
-    toggleMenu();
-    revalidateAllData();
-    router.replace("/");
-    setUser(null);
+  const handleClick = () => {
+    supabase.auth.signOut().then(() => {
+      toggleMenu();
+      revalidateAllData();
+      router.replace("/");
+      setUser(null);
+    });
   };
 
   if (user) {

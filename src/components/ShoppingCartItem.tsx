@@ -25,26 +25,28 @@ const ShoppingCartItem = ({
   const [quantity, setQuantity] = useState<number>(qty);
   const [disabled, setDisabled] = useState<boolean>(false);
 
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
 
     if (id === "delete") {
-      return await deleteCartItem(cartID);
+      return deleteCartItem(cartID);
     }
 
     if (id === "incrementorButton") {
       if (quantity < 99) {
         setDisabled(true);
-        await updateCartItem(cartID, "increment");
-        setQuantity((oldVal) => oldVal + 1);
-        setDisabled(false);
+        updateCartItem(cartID, "increment").then(() => {
+          setQuantity((oldVal) => oldVal + 1);
+          setDisabled(false);
+        });
       }
     } else if (id === "decrementorButton") {
       if (quantity > 1) {
         setDisabled(true);
-        await updateCartItem(cartID, "decrement");
-        setQuantity((oldVal) => oldVal - 1);
-        setDisabled(false);
+        updateCartItem(cartID, "decrement").then(() => {
+          setQuantity((oldVal) => oldVal - 1);
+          setDisabled(false);
+        });
       }
     }
   };

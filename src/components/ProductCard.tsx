@@ -15,7 +15,7 @@ interface ProductCardProps {
   price: number;
 }
 
-const notify = () =>
+const notifyAddedToCart = () =>
   toast.success("Added to cart", {
     position: "bottom-right",
     duration: 2000,
@@ -32,9 +32,8 @@ const ProductCard = ({
 }: ProductCardProps) => {
   const pathname = usePathname();
 
-  const handleClick = async () => {
-    await createCart(productID);
-    notify();
+  const handleClick = () => {
+    createCart(productID).then(() => notifyAddedToCart());
   };
 
   useEffect(() => {

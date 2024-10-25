@@ -11,26 +11,19 @@ const SignInWIthGoogleButton = () => {
   const supabase = createClient();
   const { user, setUser } = useUserStore((state) => state);
 
-  const handleClick = async () => {
-    await supabase.auth.signInWithOAuth({
+  const handleClick = () => {
+    supabase.auth.signInWithOAuth({
       provider: "google",
     });
   };
 
   useEffect(() => {
-    const userGetter = async () => {
-      const {
-        data: { user: userData },
-        error,
-      } = await supabase.auth.getUser();
-
+    supabase.auth.getUser().then(({ data: { user: userData }, error }) => {
       if (userData && !error && !user) {
         setUser(userData);
-        await createUser();
+        createUser();
       }
-    };
-
-    userGetter();
+    });
   }, []);
 
   if (!user) {

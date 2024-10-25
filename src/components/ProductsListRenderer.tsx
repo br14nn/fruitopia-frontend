@@ -14,18 +14,6 @@ const ProductsListRenderer = () => {
     findAllProducts(keyword, category, orderPriceBy).then(({ message }) => {
       setData(message);
     });
-
-    // async function FindAllProducts() {
-    //   const { message } = await findAllProducts(
-    //     keyword,
-    //     category,
-    //     orderPriceBy,
-    //   );
-    //   console.log(message);
-    //   setData(message);
-    // }
-
-    // FindAllProducts();
   }, [keyword, category, orderPriceBy]);
 
   return data?.map((product) => (

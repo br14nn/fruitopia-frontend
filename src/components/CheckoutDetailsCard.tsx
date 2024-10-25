@@ -24,19 +24,17 @@ const CheckoutDetailsCard = () => {
   const pathname = usePathname();
   const [cartTotal, setCartTotal] = useState<number>(0);
 
-  const handleClick = async () => {
-    const { message } = await deleteCartCheckout();
-    console.log(message);
-    if (message.count === 0) notifyError();
-    else notifySuccess();
+  const handleClick = () => {
+    deleteCartCheckout().then(({ message }) => {
+      if (message.count === 0) notifyError();
+      else notifySuccess();
+    });
   };
 
   useEffect(() => {
-    async function GetCartTotal() {
-      const { message } = await getCartTotal();
+    getCartTotal().then(({ message }) => {
       setCartTotal(message.total);
-    }
-    GetCartTotal();
+    });
   });
 
   useEffect(() => {
