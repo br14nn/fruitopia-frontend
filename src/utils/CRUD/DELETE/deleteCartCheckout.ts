@@ -2,8 +2,8 @@
 
 import axios from "axios";
 import { createClient } from "@/utils/supabase/server";
-import { apiURL } from "@/utils/utils";
 import { revalidatePath } from "next/cache";
+import { backendURL } from "@/utils/utils";
 
 export default async function deleteCartCheckout() {
   try {
@@ -15,7 +15,9 @@ export default async function deleteCartCheckout() {
 
     revalidatePath("/cart");
 
-    const { data } = await axios.delete(`${apiURL}/cart/checkout/${user?.id}`);
+    const { data } = await axios.delete(
+      `${backendURL}/cart/checkout/${user?.id}`,
+    );
 
     return data;
   } catch (error: any) {

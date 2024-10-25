@@ -11,21 +11,24 @@ const ProductsListRenderer = () => {
   );
 
   useEffect(() => {
-    const getData = async () => {
-      const { message, error } = await findAllProducts(
-        keyword,
-        category,
-        orderPriceBy,
-      );
+    findAllProducts(keyword, category, orderPriceBy).then(({ message }) => {
+      setData(message);
+    });
 
-      if (!error) setData(message);
-      else return console.error(error);
-    };
+    // async function FindAllProducts() {
+    //   const { message } = await findAllProducts(
+    //     keyword,
+    //     category,
+    //     orderPriceBy,
+    //   );
+    //   console.log(message);
+    //   setData(message);
+    // }
 
-    getData();
+    // FindAllProducts();
   }, [keyword, category, orderPriceBy]);
 
-  return data.map((product) => (
+  return data?.map((product) => (
     <ProductCard
       key={product.id}
       id={product.id}

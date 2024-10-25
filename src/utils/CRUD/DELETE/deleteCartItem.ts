@@ -1,12 +1,12 @@
 "use server";
 
-import { apiURL } from "@/utils/utils";
+import { backendURL } from "@/utils/utils";
 import axios from "axios";
 import { revalidatePath } from "next/cache";
 
 export default async function deleteCartItem(cartID: number) {
   try {
-    const { data } = await axios.delete(`${apiURL}/cart`, {
+    const { data } = await axios.delete(`${backendURL}/cart`, {
       data: {
         id: cartID,
       },

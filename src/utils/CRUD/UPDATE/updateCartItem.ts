@@ -1,7 +1,7 @@
 "use server";
 
+import { backendURL } from "@/utils/utils";
 import axios from "axios";
-import { apiURL } from "@/utils/utils";
 import { revalidatePath } from "next/cache";
 
 export default async function updateCartItem(
@@ -9,7 +9,7 @@ export default async function updateCartItem(
   quantity?: "increment" | "decrement",
 ) {
   try {
-    const { data } = await axios.patch(`${apiURL}/cart`, {
+    const { data } = await axios.patch(`${backendURL}/cart`, {
       id: id,
       quantity: quantity,
     });

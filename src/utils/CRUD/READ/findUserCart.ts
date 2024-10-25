@@ -1,8 +1,8 @@
 "use server";
 
 import axios from "axios";
-import { apiURL } from "@/utils/utils";
 import { createClient } from "@/utils/supabase/server";
+import { backendURL } from "@/utils/utils";
 
 export default async function findUserCart() {
   try {
@@ -12,7 +12,7 @@ export default async function findUserCart() {
       data: { user },
     } = await supabase.auth.getUser();
 
-    const { data } = await axios.get(`${apiURL}/cart?userID=${user?.id}`);
+    const { data } = await axios.get(`${backendURL}/cart?userID=${user?.id}`);
 
     return data;
   } catch (error: any) {

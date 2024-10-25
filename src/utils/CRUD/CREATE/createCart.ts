@@ -2,8 +2,8 @@
 
 import axios from "axios";
 import { revalidatePath } from "next/cache";
-import { apiURL } from "@/utils/utils";
 import { createClient } from "@/utils/supabase/server";
+import { backendURL } from "@/utils/utils";
 
 export default async function (productID: number) {
   try {
@@ -13,7 +13,10 @@ export default async function (productID: number) {
       data: { user },
     } = await supabase.auth.getUser();
 
-    await axios.post(`${apiURL}/cart`, { userID: user?.id, productID });
+    await axios.post(`${backendURL}/cart`, {
+      userID: user?.id,
+      productID,
+    });
 
     revalidatePath("/cart");
   } catch (error: any) {
